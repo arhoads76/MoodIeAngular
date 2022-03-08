@@ -3,9 +3,9 @@ import { LetterClues, LettersUsedDictionary } from './GameState'
 import { Logger } from './services/Logger';
 
 const keyboardKeys : Array<Array<string>> = [
-	"QWERTYUIOP".split(''),
-	"ASDFGHJKL".split(''),
-	["Backspace", ..."ZXCVBNM".split(''), "Enter"]
+	["Q","W","E","R","T","Y","U","I","O","P"],
+	["A","S","D","F","G","H","J","K","L"],
+	["Backspace", "Z","X","C","V","B","N","M", "Enter"]
 ];
 
 @Component({
