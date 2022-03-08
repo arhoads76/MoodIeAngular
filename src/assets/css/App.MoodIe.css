@@ -1,0 +1,84 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 14px;
+	color: #333;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 8px 0;
+}
+
+p {
+	margin: 0;
+}
+
+.toolbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid #666;
+	color: white;
+	font-weight: 600;
+}
+
+.toolbar img, .toolbar i {
+	margin: 0 16px;
+}
+.toolbar h2 {
+	display: inline-block;
+	margin: 0 auto;
+	width: 150px;
+}
+
+html {
+	height: 100%;
+}
+body {
+	background: black;
+	height: 100%;
+}
+.appRoot {
+	background-image: url(../images/moon.jpg);
+	background-position-x: center;
+	color: white;
+	height: 100%;
+}
+.content {
+	display: flex;
+	margin: 82px auto 32px;
+	padding: 0 16px;
+	max-width: 960px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.gameBoard { display:block; }
+.gameBoard .guess { display:block; }
+.gameBoard .guess .letter { display:inline-block; width:3em; height:3em; margin:5px; border:2px solid #666; background:#222; opacity:0.8; text-align:center; vertical-align:top; }
+.gameBoard .guess .letter span { display:inline-block; font-size:1.8em; padding:5px; margin:0; }
+.gameBoard .guess .letter.correct { border-color:#60a54f; background:#60a54f; }
+.gameBoard .guess .letter.elsewhere { border-color:#b5af4c; background:#b5af4c; }
+.gameBoard .guess .letter.absent { border-color:#666; background:#666; }
+.gameBoard .guess.invalidWord .letter { color:red; }
+
+.keyboard { display:block; width:420px; margin-top:20px; }
+.keyboard .keys { display:block; text-align:center; }
+.keyboard .key { display:inline-block; cursor:pointer; width:2.2em; margin:4px; background:#a1a6b2; color:black; border:1px solid #555; opacity:0.9; text-align:center; }
+.keyboard .key.large { width:3.2em; }
+.keyboard .key.correct { background:#60a54f; }
+.keyboard .key.elsewhere { background:#b5af4c; }
+.keyboard .key.absent { background:#666; }
+.keyboard .key span { display:inline-block; font-size:1.3em; padding:8px; margin:0; }
+.keyboard.disabled .key { opacity:0.75; color:#444; }

@@ -1,0 +1,16 @@
+<div [ngClass]="{ 'keyboard':true, 'disabled':disabled }">
+	<div *ngFor="let row of keyboardKeys; let i = index;" class="keys">
+		<div *ngFor="let keyboardKey of row; let j = index;" [attr.rel]="keyboardKey"
+				[ngClass]="{
+					'key': true,
+					'large': keyboardKey == 'Enter' || keyboardKey == 'Backspace' ,
+					'absent': isAbsent(keyboardKey),
+					'elsewhere': isElsewhere(keyboardKey),
+					'correct': isCorrect(keyboardKey)
+				}" (click)="onKeyClick($event)">
+			<span *ngIf="keyboardKey == 'Enter'"><i class="fa fa-rocket"></i></span>
+			<span *ngIf="keyboardKey == 'Backspace'"><i class="fa fa-arrow-left"></i></span>
+			<span *ngIf="keyboardKey != 'Enter' && keyboardKey != 'Backspace'">{{ keyboardKey }}</span>
+		</div>
+	</div>
+</div>

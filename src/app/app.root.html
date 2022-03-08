@@ -1,0 +1,7 @@
+<div class="appRoot">
+	<div class="content">
+		<app-toolbar></app-toolbar>
+		<app-game-board [game]="game" [gameState]="game.state"></app-game-board>
+		<app-keyboard [disabled]="disableKeyboard()" [lettersUsed]="game.state.lettersUsed" (notifyKeyPressed)="onKeyPress($event)"></app-keyboard>
+	</div>
+</div>
