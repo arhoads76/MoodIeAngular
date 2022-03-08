@@ -39,7 +39,7 @@ p {
 .toolbar h2 {
 	display: inline-block;
 	margin: 0 auto;
-	width: 150px;
+	width: 250px;
 }
 
 html {
@@ -82,3 +82,5 @@ body {
 .keyboard .key.absent { background:#666; }
 .keyboard .key span { display:inline-block; font-size:1.3em; padding:8px; margin:0; }
 .keyboard.disabled .key { opacity:0.75; color:#444; }
+
+.answer { font-size:1.5em; text-align:center; border:2px solid #666; background:#222; padding:10px; opacity:0.8; margin:4px; }

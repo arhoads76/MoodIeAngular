@@ -10,4 +10,7 @@
 			<span>{{ (letter.value || '').toUpperCase() }}</span>
 		</div>
 	</div>
+	<div *ngIf="isGameFinished() && !isGameSuccess()" class="answer">
+		The word was: <b>{{ secretWord() }}</b>
+	</div>
 </div>

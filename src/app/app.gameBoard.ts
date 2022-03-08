@@ -63,7 +63,7 @@ export class GameBoard implements OnInit, OnChanges {
 
 	updateAnimatedLetter() {
 		if (this.game) {
-			if (this.animateLetter < this.game.state.wordLength) {
+			if (false) { //this.animateLetter < this.game.state.wordLength) {
 				this.animateLetter++;
 			} else {
 				clearInterval(this.animateInterval);
@@ -74,6 +74,15 @@ export class GameBoard implements OnInit, OnChanges {
 		}
 	}
 
+	isGameFinished() : boolean {
+		return !!this.gameState && this.gameState.gameState == GameStates.Finished;
+	}
+	isGameSuccess() : boolean {
+		return !!this.gameState && this.gameState.isCorrect;
+	}
+	secretWord() : string {
+		return this.game ? this.game.state.secretWord.toUpperCase() : '';
+	}
 	isActiveRow(i : number) : boolean {
 		return !!this.game && i == this.game.state.activeRow;
 	}
