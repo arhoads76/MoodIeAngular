@@ -1,4 +1,4 @@
-import { dictionary } from './dictionary';
+import { gameWords, validWords } from './dictionary';
 import { encode, decode} from './base64';
 
 export enum GameStates {
@@ -95,7 +95,7 @@ function pickSecretWord(wordLength : number) {
 	if (queryString.get('challenge')) {
 		word = decode(queryString.get('challenge') as string);
 	} else {
-		var validWords	= dictionary.filter((word : string) => (word.length == wordLength && word[0] != '*'));
+		var validWords	= gameWords.filter((word : string) => (word.length == wordLength && word[0] != '*'));
 		var randomValue	= queryString.get('seed') ? mulberry32(Number(queryString.get('seed'))) : Math.random();
 
 		word = validWords[Math.floor(validWords.length * randomValue)];
@@ -111,7 +111,8 @@ function mulberry32(seed : any) {
 }
 function isValidWord(letters : Array<Letter>) {
 	var test 	= letters.map((letter : Letter) => letter.value).join('');
-	var found 	= dictionary.find((word : string) => test == word);
+	var found 	= gameWords.find((word : string) => test == word)
+					|| validWords.find((word : string) => test == word);
 
 	return !!found;
 }
