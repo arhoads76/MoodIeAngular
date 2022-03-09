@@ -1,4 +1,4 @@
-import dictionary from './dictionary';
+import { dictionary } from './dictionary';
 import { encode, decode} from './base64';
 
 export enum GameStates {
@@ -127,6 +127,9 @@ export function gameStateReducer(state : GameState, action : Action) {
 
 	function addLetter(state : GameState, letter : string) : GameState {
 		var row = state.rows[state.activeRow];
+		if (row.letters.length == state.wordLength)
+			return state;
+
 		row = {...row, letters:[...row.letters]}
 
 		row.letters.push({ value:letter, clue:LetterClues.Editing });

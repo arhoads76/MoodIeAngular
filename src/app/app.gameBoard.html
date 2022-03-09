@@ -1,13 +1,15 @@
 <div class="gameBoard">
 	<div *ngFor="let row of boardRows; let i = index;" [ngClass]="{ 'guess':true, 'invalidWord':isInvalidWord(i) }">
-		<div *ngFor="let letter of row; let j = index;" [ngClass]="{
+		<div *ngFor="let letter of row; let j = index;" class="cell">
+			<div [ngClass]="{
 				 'letter': true,
 				 'animate': isAnimatingLetter(j),
 				 'correct': isCorrect(i, j),
 				 'elsewhere': isElsewhere(i, j),
 				 'absent': isAbsent(i, j)
 			 }">
-			<span>{{ (letter.value || '').toUpperCase() }}</span>
+				{{ (letter.value || '').toUpperCase() }}
+			</div>
 		</div>
 	</div>
 	<div *ngIf="isGameFinished() && !isGameSuccess()" class="answer">

@@ -34,12 +34,18 @@ p {
 }
 
 .toolbar img, .toolbar i {
-	margin: 0 16px;
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	bottom: 0;
+	width: 20px;
 }
 .toolbar h2 {
 	display: inline-block;
 	margin: 0 auto;
 	width: 250px;
+	padding: 0;
+	text-align: center;
 }
 
 html {
@@ -66,12 +72,16 @@ body {
 
 .gameBoard { display:block; }
 .gameBoard .guess { display:block; }
-.gameBoard .guess .letter { display:inline-block; width:3em; height:3em; margin:5px; border:2px solid #666; background:#222; opacity:0.8; text-align:center; vertical-align:top; }
-.gameBoard .guess .letter span { display:inline-block; font-size:1.8em; padding:5px; margin:0; }
-.gameBoard .guess .letter.correct { border-color:#60a54f; background:#60a54f; }
-.gameBoard .guess .letter.elsewhere { border-color:#b5af4c; background:#b5af4c; }
-.gameBoard .guess .letter.absent { border-color:#666; background:#666; }
-.gameBoard .guess.invalidWord .letter { color:red; }
+.gameBoard .guess .cell { position:relative; display:inline-block; width:3em; height:3em; margin:5px; opacity:0.8; text-align:center; vertical-align:top; perspective:50px; }
+.gameBoard .guess .cell .letter { position:absolute; left:2px; top:2px; right:2px; bottom:2px; border:2px solid #666; background:#222; font-size:1.8em; }
+.gameBoard .guess .cell .correct { border-color:#60a54f; background:#60a54f; }
+.gameBoard .guess .cell .elsewhere { border-color:#b5af4c; background:#b5af4c; }
+.gameBoard .guess .cell .absent { border-color:#666; background:#666; }
+.gameBoard .guess .cell .front { transform:rotateY(0deg); backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.gameBoard .guess .cell .back { transform:rotateY(-180deg); backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.gameBoard .guess .cell.animate .front { z-index:5; transition:transform .8s; transform-style:preserve-3d; transform:rotateY(180deg); }
+.gameBoard .guess .cell.animate .back { z-index:5; transition:transform .8s; transform-style:preserve-3d; transform:rotateY(0deg); }
+.gameBoard .guess.invalidWord .cell { color:red; }
 
 .keyboard { display:block; width:420px; margin-top:20px; }
 .keyboard .keys { display:block; text-align:center; }
