@@ -1,18 +1,12 @@
 <div class="gameBoard">
 	<div *ngFor="let row of boardRows; let i = index;" [ngClass]="{ 'guess':true, 'invalidWord':isInvalidWord(i) }">
-		<div *ngFor="let letter of row; let j = index;" class="cell">
-			<div [ngClass]="{
-				 'letter': true,
-				 'animate': isAnimatingLetter(j),
-				 'correct': isCorrect(i, j),
-				 'elsewhere': isElsewhere(i, j),
-				 'absent': isAbsent(i, j)
-			 }">
-				{{ (letter.value || '').toUpperCase() }}
-			</div>
-		</div>
+		<app-cell *ngFor="let letter of row; let j = index;" [flip]="isAnimatingRow(i)" [animate]="isAnimatingLetter(i,j)" [letter]="letter"
+					[correct]="isCorrect(i,j)" [elsewhere]="isElsewhere(i,j)" [absent]="isAbsent(i,j)"></app-cell>
 	</div>
 	<div *ngIf="isGameFinished() && !isGameSuccess()" class="answer">
 		The word was: <b>{{ secretWord() }}</b>
+	</div>
+	<div *ngIf="isGameFinished() && isGameSuccess()" class="answer">
+		Success!
 	</div>
 </div>

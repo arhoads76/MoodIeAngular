@@ -55,15 +55,15 @@ export class GameBoard implements OnInit, OnChanges {
 			this.boardRows = makeBoardRows(this.game);
 
 			if (this.game.state.gameState == GameStates.Scoring && this.animateInterval == undefined) {
-				this.animateLetter = 0;
-				this.animateInterval = setInterval(this.updateAnimatedLetter.bind(this), 500);
+				this.animateLetter = -1;
+				this.animateInterval = setInterval(this.updateAnimatedLetter.bind(this), 800);
 			}
 		}
 	}
 
 	updateAnimatedLetter() {
 		if (this.game) {
-			if (false) { //this.animateLetter < this.game.state.wordLength) {
+			if (this.animateLetter < this.game.state.wordLength) {
 				this.animateLetter++;
 			} else {
 				clearInterval(this.animateInterval);
@@ -97,8 +97,11 @@ export class GameBoard implements OnInit, OnChanges {
 
 		return isInvalid;
 	}
-	isAnimatingLetter(j : number) : boolean {
-		return false;
+	isAnimatingRow(i : number) : boolean {
+		return this.isActiveRow(i) && this.game != null && this.game.state.rows[i].rowState == RowStates.Pending;
+	}
+	isAnimatingLetter(i : number, j : number) : boolean {
+		return this.isActiveRow(i) && j <= this.animateLetter;
 	}
 	isCorrect(i : number, j : number) : boolean {
 		if (this.game && this.game.state.rows[i] && this.game.state.rows[i].letters[j]) {

@@ -1,5 +1,5 @@
 import { Component, Injectable, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
-import { LetterClues, LettersUsedDictionary } from './GameState'
+import { LetterClues, LettersUsedDictionary, RowStates,  MaxGuesses, GameStates } from './GameState'
 import { Logger } from './services/Logger';
 
 const keyboardKeys : Array<Array<string>> = [
